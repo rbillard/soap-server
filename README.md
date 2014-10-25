@@ -38,7 +38,7 @@ Il existe 3 services permettant de gérer les acteurs, les films et les rôles.
 
 ##### Create
 
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/">
+&#60soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/">
    <soapenv:Header/>
    <soapenv:Body>
       <ws:create>
