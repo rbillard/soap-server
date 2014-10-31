@@ -39,4 +39,9 @@ public class MovieWebServiceImpl implements MovieWebService {
 		return movieService.find( title );
 	}
 
+	@Override
+	public List<Movie> findAll() {
+		return movieService.findAll();
+	}
+
 }

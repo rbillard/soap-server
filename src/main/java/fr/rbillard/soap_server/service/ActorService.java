@@ -17,5 +17,7 @@ public interface ActorService {
 	void delete( Long id );
 
 	List<Actor> find( String firstName, String lastName );
+	
+	List<Actor> findAll();
 
 }

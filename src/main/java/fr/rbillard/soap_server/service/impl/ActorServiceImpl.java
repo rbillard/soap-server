@@ -63,4 +63,9 @@ public class ActorServiceImpl implements ActorService {
 		return repository.findByFirstNameAndLastName( firstName, lastName );
 	}
 
+	@Override
+	public List<Actor> findAll() {
+		return repository.findAll();
+	}
+
 }

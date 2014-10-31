@@ -55,4 +55,9 @@ public class MovieServiceImpl implements MovieService {
 		return repository.findByTitle( title );
 	}
 
+	@Override
+	public List<Movie> findAll() {
+		return repository.findAll();
+	}
+
 }

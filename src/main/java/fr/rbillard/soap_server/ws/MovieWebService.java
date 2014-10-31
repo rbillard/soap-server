@@ -21,4 +21,6 @@ public interface MovieWebService {
 	
 	List<Movie> find(@WebParam(name = "title") String title);
 	
+	List<Movie> findAll();
+	
 }

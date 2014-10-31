@@ -40,4 +40,9 @@ public class ActorWebServiceImpl implements ActorWebService {
 		return actorService.find( firstName, lastName );
 	}
 
+	@Override
+	public List<Actor> findAll() {
+		return actorService.findAll();
+	}
+
 }

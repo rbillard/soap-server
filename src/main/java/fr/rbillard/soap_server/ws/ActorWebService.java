@@ -31,4 +31,6 @@ public interface ActorWebService {
 	
 	List<Actor> find(@WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName);
 	
+	List<Actor> findAll();
+	
 }

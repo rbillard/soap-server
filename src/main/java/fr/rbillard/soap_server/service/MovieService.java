@@ -17,4 +17,6 @@ public interface MovieService {
 	
 	List<Movie> find( String title );
 	
+	List<Movie> findAll();
+	
 }
