@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Embeddable
 public class RoleId implements Serializable {
@@ -29,7 +28,6 @@ public class RoleId implements Serializable {
 	}
 
 	
-	@XmlTransient
 	public Movie getMovie() {
 		return movie;
 	}

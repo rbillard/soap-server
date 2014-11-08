@@ -13,6 +13,8 @@ public interface MovieService {
 	
 	Movie findOne( Long id ) throws MovieNotFoundException;
 	
+	Movie findOneWithRoles( Long id ) throws MovieNotFoundException;
+	
 	void delete( Long id );
 	
 	List<Movie> find( String title );

@@ -18,6 +18,7 @@
 		<cxf.version>3.0.2</cxf.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		<hibernate.version>4.3.6.Final</hibernate.version>
+		<dozer.version>5.5.1</dozer.version>
 	</properties>
 
 	<dependencies>
@@ -80,6 +81,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+		
+		<!-- DOZER -->
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+			<version>${dozer.version}</version>
 		</dependency>
 
 		<!-- JUNIT -->

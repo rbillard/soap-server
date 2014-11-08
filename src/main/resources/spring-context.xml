@@ -12,16 +12,8 @@
     http://cxf.apache.org/schemas/jaxws.xsd">
     
     <jaxws:server 
-        serviceClass="fr.rbillard.soap_server.ws.ActorWebService" address="/actor"
-        serviceBean="#actorWS">
-    </jaxws:server>
-    <jaxws:server 
-        serviceClass="fr.rbillard.soap_server.ws.MovieWebService" address="/movie"
-        serviceBean="#movieWS">
-    </jaxws:server>
-    <jaxws:server 
-        serviceClass="fr.rbillard.soap_server.ws.RoleWebService" address="/role"
-        serviceBean="#roleWS">
+        serviceClass="fr.rbillard.soap_server.ws.CinemaWebService" address="/cinema"
+        serviceBean="#cinemaWS">
     </jaxws:server>
     
 </beans>

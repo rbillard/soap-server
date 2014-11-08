@@ -9,13 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlType;
 
 @Entity
 @Table
-@XmlType(propOrder = {"id", "title", "roles"})
 public class Movie {
 
 	@Id
@@ -44,9 +40,7 @@ public class Movie {
 		this.title = title;
 	}
 
-	
-	@XmlElementWrapper(name = "roles")
-	@XmlElement(name = "role")
+
 	public List<Role> getRoles() {
 		return roles;
 	}

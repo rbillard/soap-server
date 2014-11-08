@@ -3,10 +3,13 @@ package fr.rbillard.soap_server.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import fr.rbillard.soap_server.entity.Actor;
+import fr.rbillard.soap_server.entity.Role;
 import fr.rbillard.soap_server.exception.ActorNotFoundException;
 import fr.rbillard.soap_server.repository.ActorRepository;
 import fr.rbillard.soap_server.service.ActorService;
@@ -47,7 +50,20 @@ public class ActorServiceImpl implements ActorService {
 		
 		Actor actor = repository.findOne( id );
 		if ( actor == null ) {
-			throw new ActorNotFoundException();
+			throw new ActorNotFoundException( id );
+		}
+		return actor;
+		
+	}
+	
+	@Override
+	@Transactional( readOnly = true )
+	public Actor findOneWithRoles( Long id ) throws ActorNotFoundException {
+		
+		Actor actor = findOne( id );
+		Hibernate.initialize( actor.getRoles() );
+		for ( Role role : actor.getRoles() ) {
+			Hibernate.initialize( role.getId().getMovie() );
 		}
 		return actor;
 		

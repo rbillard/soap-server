@@ -14,6 +14,8 @@ public interface ActorService {
 
 	Actor findOne( Long id ) throws ActorNotFoundException;
 
+	Actor findOneWithRoles( Long id ) throws ActorNotFoundException;
+
 	void delete( Long id );
 
 	List<Actor> find( String firstName, String lastName );
