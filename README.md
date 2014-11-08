@@ -10,6 +10,8 @@ Spring 4.1.1
 
 CXF 3.0.2
 
+Dozer 5.5.1
+
 Hibernate 4.3.6
 
 Spring JPA 1.7.0
@@ -39,8 +41,8 @@ Il existe 1 service permettant de gérer les acteurs, les films et les rôles.
 
 ##### Create
 
-&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/"&gt;
-   &lt;soapenv:Header/&gt;
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/"&gt;\n
+   \t&lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
       &lt;ws:createActor&gt;
          &lt;firstName&gt;Johnny&lt;/firstName&gt;
@@ -115,32 +117,6 @@ Réponse :
             &lt;firstName&gt;Johnny&lt;/firstName&gt;
             &lt;lastName&gt;DEPP&lt;/lastName&gt;
             &lt;birthDate&gt;1963-06-09T00:00:00+01:00&lt;/birthDate&gt;
-         &lt;/return&gt;
-      &lt;/ns2:findOneActorResponse&gt;
-   &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-
-##### findOneWithRoles
-
-&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/"&gt;
-   &lt;soapenv:Header/&gt;
-   &lt;soapenv:Body&gt;
-      &lt;ws:findOneActorWithRoles&gt;
-         &lt;id&gt;1&lt;/id&gt;
-      &lt;/ws:findOneActorWithRoles&gt;
-   &lt;/soapenv:Body&gt;
-&lt;/soapenv:Envelope&gt;
-
-Réponse :
-
-&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-   &lt;soap:Body&gt;
-      &lt;ns2:findOneActorWithRolesResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
-         &lt;return&gt;
-            &lt;id&gt;1&lt;/id&gt;
-            &lt;firstName&gt;Johnny&lt;/firstName&gt;
-            &lt;lastName&gt;DEPP&lt;/lastName&gt;
-            &lt;birthDate&gt;1963-06-09T00:00:00+01:00&lt;/birthDate&gt;
             &lt;roles&gt;
                &lt;roles&gt;
                   &lt;firstName&gt;Jack&lt;/firstName&gt;
@@ -152,7 +128,7 @@ Réponse :
                &lt;/roles&gt;
             &lt;/roles&gt;
          &lt;/return&gt;
-      &lt;/ns2:findOneActorWithRolesResponse&gt;
+      &lt;/ns2:findOneActorResponse&gt;
    &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;
 
@@ -303,30 +279,6 @@ Réponse :
          &lt;return&gt;
             &lt;id&gt;1&lt;/id&gt;
             &lt;title&gt;Pirates of the Caribbean&lt;/title&gt;
-         &lt;/return&gt;
-      &lt;/ns2:findOneMovieResponse&gt;
-   &lt;/soap:Body&gt;
-&lt;/soap:Envelope&gt;
-
-##### findOneWithRoles
-
-&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.soap_server.rbillard.fr/"&gt;
-   &lt;soapenv:Header/&gt;
-   &lt;soapenv:Body&gt;
-      &lt;ws:findOneMovieWithRoles&gt;
-         &lt;id&gt;1&lt;/id&gt;
-      &lt;/ws:findOneMovieWithRoles&gt;
-   &lt;/soapenv:Body&gt;
-&lt;/soapenv:Envelope&gt;
-
-Réponse :
-
-&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
-   &lt;soap:Body&gt;
-      &lt;ns2:findOneMovieWithRolesResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
-         &lt;return&gt;
-            &lt;id&gt;1&lt;/id&gt;
-            &lt;title&gt;Pirates of the Caribbean&lt;/title&gt;
             &lt;roles&gt;
                &lt;roles&gt;
                   &lt;firstName&gt;Jack&lt;/firstName&gt;
@@ -350,7 +302,7 @@ Réponse :
                &lt;/roles&gt;
             &lt;/roles&gt;
          &lt;/return&gt;
-      &lt;/ns2:findOneMovieWithRolesResponse&gt;
+      &lt;/ns2:findOneMovieResponse&gt;
    &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;
 

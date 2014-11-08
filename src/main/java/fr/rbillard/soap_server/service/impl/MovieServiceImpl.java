@@ -54,9 +54,6 @@ public class MovieServiceImpl implements MovieService {
 		
 		Movie movie = findOne( id );
 		Hibernate.initialize( movie.getRoles() );
-		for ( Role role : movie.getRoles() ) {
-			Hibernate.initialize( role.getId().getActor() );
-		}
 		return movie;
 		
 	}

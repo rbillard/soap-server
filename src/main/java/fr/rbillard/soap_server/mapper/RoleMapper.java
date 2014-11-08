@@ -7,7 +7,7 @@ import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import fr.rbillard.soap_server.dto.RoleWithActorAndMovieDTO;
+import fr.rbillard.soap_server.dto.RoleDTO;
 import fr.rbillard.soap_server.entity.Role;
 
 @Component
@@ -20,13 +20,13 @@ public final class RoleMapper {
 		
 	}
 
-	public RoleWithActorAndMovieDTO map( Role role ) {
-		return mapper.map( role, RoleWithActorAndMovieDTO.class );
+	public RoleDTO map( Role role ) {
+		return mapper.map( role, RoleDTO.class, "role" );
 	}
 
-	public List<RoleWithActorAndMovieDTO> map( List<Role> roles ) {
+	public List<RoleDTO> map( List<Role> roles ) {
 		
-		List<RoleWithActorAndMovieDTO> dtos = new ArrayList<>( roles.size() );
+		List<RoleDTO> dtos = new ArrayList<>( roles.size() );
 		
 		for ( Role role : roles ) {
 			dtos.add( map( role ) );

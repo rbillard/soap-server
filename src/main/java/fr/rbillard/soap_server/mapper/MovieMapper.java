@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.rbillard.soap_server.dto.MovieDTO;
-import fr.rbillard.soap_server.dto.MovieWithRolesDTO;
 import fr.rbillard.soap_server.entity.Movie;
 
 @Component
@@ -21,20 +20,20 @@ public final class MovieMapper {
 		
 	}
 
-	public MovieDTO map( Movie movie ) {
-		return mapper.map( movie, MovieDTO.class );
+	public MovieDTO mapFull( Movie movie ) {
+		return mapper.map( movie, MovieDTO.class, "movie" );
+	}
+	
+	public MovieDTO mapLight( Movie movie ) {
+		return mapper.map( movie, MovieDTO.class, "movieWithoutRoles" );
 	}
 
-	public MovieWithRolesDTO mapWithRoles( Movie movie ) {
-		return mapper.map( movie, MovieWithRolesDTO.class );
-	}
-
-	public List<MovieDTO> map( List<Movie> movies ) {
+	public List<MovieDTO> mapLight( List<Movie> movies ) {
 		
 		List<MovieDTO> dtos = new ArrayList<>( movies.size() );
 		
 		for ( Movie movie : movies ) {
-			dtos.add( map( movie ) );
+			dtos.add( mapLight( movie ) );
 		}
 		
 		return dtos;

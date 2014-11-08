@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.rbillard.soap_server.entity.Actor;
-import fr.rbillard.soap_server.entity.Role;
 import fr.rbillard.soap_server.exception.ActorNotFoundException;
 import fr.rbillard.soap_server.repository.ActorRepository;
 import fr.rbillard.soap_server.service.ActorService;
@@ -62,9 +61,6 @@ public class ActorServiceImpl implements ActorService {
 		
 		Actor actor = findOne( id );
 		Hibernate.initialize( actor.getRoles() );
-		for ( Role role : actor.getRoles() ) {
-			Hibernate.initialize( role.getId().getMovie() );
-		}
 		return actor;
 		
 	}

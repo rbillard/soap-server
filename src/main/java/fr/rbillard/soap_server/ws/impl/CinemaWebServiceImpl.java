@@ -6,10 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import fr.rbillard.soap_server.dto.ActorDTO;
-import fr.rbillard.soap_server.dto.ActorWithRolesDTO;
 import fr.rbillard.soap_server.dto.MovieDTO;
-import fr.rbillard.soap_server.dto.MovieWithRolesDTO;
-import fr.rbillard.soap_server.dto.RoleWithActorAndMovieDTO;
+import fr.rbillard.soap_server.dto.RoleDTO;
 import fr.rbillard.soap_server.entity.Actor;
 import fr.rbillard.soap_server.entity.Movie;
 import fr.rbillard.soap_server.entity.Role;
@@ -49,27 +47,21 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	@Override
 	public ActorDTO createActor( String firstName, String lastName, Date birthDate ) {
 		Actor actor = actorService.create( firstName, lastName, birthDate );
-		return actorMapper.map( actor );
+		return actorMapper.mapLight( actor );
 	}
 
 	@Override
 	public ActorDTO updateActor( Long id, String firstName, String lastName, Date birthDate ) throws ActorNotFoundException {
 		Actor actor = actorService.update( id, firstName, lastName, birthDate );
-		return actorMapper.map( actor );
+		return actorMapper.mapLight( actor );
 	}
 
 	@Override
 	public ActorDTO findOneActor( Long id ) throws ActorNotFoundException {
-		Actor actor = actorService.findOne( id );
-		return actorMapper.map( actor );
+		Actor actor = actorService.findOneWithRoles( id );
+		return actorMapper.mapFull( actor );
 	}
 	
-	@Override
-	public ActorWithRolesDTO findOneActorWithRoles( Long id ) throws ActorNotFoundException {
-		Actor actor = actorService.findOneWithRoles( id );
-		return actorMapper.mapWithRoles( actor );
-	}
-
 	@Override
 	public void deleteActor( Long id ) {
 		actorService.delete( id );
@@ -78,13 +70,13 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	@Override
 	public List<ActorDTO> findActors( String firstName, String lastName ) {
 		List<Actor> actors = actorService.find( firstName, lastName );
-		return actorMapper.map( actors );
+		return actorMapper.mapLight( actors );
 	}
 
 	@Override
 	public List<ActorDTO> findAllActors() {
 		List<Actor> actors = actorService.findAll();
-		return actorMapper.map( actors );
+		return actorMapper.mapLight( actors );
 	}
 	
 	/** MOVIE */
@@ -92,27 +84,21 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	@Override
 	public MovieDTO createMovie( String title ) {
 		Movie movie = movieService.create( title );
-		return movieMapper.map( movie );
+		return movieMapper.mapLight( movie );
 	}
 
 	@Override
 	public MovieDTO updateMovie( Long id, String title ) throws MovieNotFoundException {
 		Movie movie = movieService.update( id, title );
-		return movieMapper.map( movie );
+		return movieMapper.mapLight( movie );
 	}
 
 	@Override
 	public MovieDTO findOneMovie( Long id ) throws MovieNotFoundException {
-		Movie movie = movieService.findOne( id );
-		return movieMapper.map( movie );
+		Movie movie = movieService.findOneWithRoles( id );
+		return movieMapper.mapFull( movie );
 	}
 	
-	@Override
-	public MovieWithRolesDTO findOneMovieWithRoles( Long id ) throws MovieNotFoundException {
-		Movie movie = movieService.findOneWithRoles( id );
-		return movieMapper.mapWithRoles( movie );
-	}
-
 	@Override
 	public void deleteMovie( Long id ) {
 		movieService.delete( id );
@@ -121,25 +107,25 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	@Override
 	public List<MovieDTO> findMovies( String title ) {
 		List<Movie> movies = movieService.find( title );
-		return movieMapper.map( movies );
+		return movieMapper.mapLight( movies );
 	}
 
 	@Override
 	public List<MovieDTO> findAllMovies() {
 		List<Movie> movies = movieService.findAll();
-		return movieMapper.map( movies );
+		return movieMapper.mapLight( movies );
 	}
 	
 	/** ROLE */
 	
 	@Override
-	public RoleWithActorAndMovieDTO createRole( Long actorId, Long movieId, String firstName, String lastName ) throws ActorNotFoundException, MovieNotFoundException {
+	public RoleDTO createRole( Long actorId, Long movieId, String firstName, String lastName ) throws ActorNotFoundException, MovieNotFoundException {
 		Role role = roleService.create( actorId, movieId, firstName, lastName );
 		return roleMapper.map( role );
 	}
 	
 	@Override
-	public RoleWithActorAndMovieDTO updateRole( Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException {
+	public RoleDTO updateRole( Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException {
 		Role role = roleService.update( actorId, movieId, firstName, lastName );
 		return roleMapper.map( role );
 	}
@@ -150,13 +136,13 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	}
 
 	@Override
-	public List<RoleWithActorAndMovieDTO> findAllRoles() {
+	public List<RoleDTO> findAllRoles() {
 		List<Role> roles = roleService.findAll();
 		return roleMapper.map( roles );
 	}
 
 	@Override
-	public RoleWithActorAndMovieDTO findOneRole( Long actorId, Long movieId ) throws RoleNotFoundException {
+	public RoleDTO findOneRole( Long actorId, Long movieId ) throws RoleNotFoundException {
 		Role role = roleService.find( actorId, movieId );
 		return roleMapper.map( role );
 	}

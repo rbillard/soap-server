@@ -1,12 +1,18 @@
 package fr.rbillard.soap_server.dto;
 
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"id", "title"})
+import com.sun.xml.txw2.annotation.XmlElement;
+
+@XmlType(propOrder = {"id", "title", "roles"})
 public class MovieDTO {
 
 	private Long id;
 	private String title;
+	private List<RoleDTO> roles;
 	
 	
 	public Long getId() {
@@ -22,6 +28,16 @@ public class MovieDTO {
 	}
 	public void setTitle( String title ) {
 		this.title = title;
+	}
+	
+	
+	@XmlElementWrapper( name = "roles " )
+	@XmlElement( "role" )
+	public List<RoleDTO> getRoles() {
+		return roles;
+	}
+	public void setRoles( List<RoleDTO> roles ) {
+		this.roles = roles;
 	}
 
 	

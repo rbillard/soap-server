@@ -1,16 +1,21 @@
 package fr.rbillard.soap_server.dto;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"id", "firstName", "lastName", "birthDate"})
+import com.sun.xml.txw2.annotation.XmlElement;
+
+@XmlType(propOrder = {"id", "firstName", "lastName", "birthDate", "roles"})
 public class ActorDTO {
 
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private Date birthDate;
+	private List<RoleDTO> roles;
 	
 	
 	public Long getId() {
@@ -42,6 +47,16 @@ public class ActorDTO {
 	}
 	public void setBirthDate( Date birthDate ) {
 		this.birthDate = birthDate;
+	}
+	
+	
+	@XmlElementWrapper( name = "roles " )
+	@XmlElement( "role" )
+	public List<RoleDTO> getRoles() {
+		return roles;
+	}
+	public void setRoles( List<RoleDTO> roles ) {
+		this.roles = roles;
 	}
 	
 	

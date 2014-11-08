@@ -7,10 +7,8 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import fr.rbillard.soap_server.dto.ActorDTO;
-import fr.rbillard.soap_server.dto.ActorWithRolesDTO;
 import fr.rbillard.soap_server.dto.MovieDTO;
-import fr.rbillard.soap_server.dto.MovieWithRolesDTO;
-import fr.rbillard.soap_server.dto.RoleWithActorAndMovieDTO;
+import fr.rbillard.soap_server.dto.RoleDTO;
 import fr.rbillard.soap_server.exception.ActorNotFoundException;
 import fr.rbillard.soap_server.exception.MovieNotFoundException;
 import fr.rbillard.soap_server.exception.RoleNotFoundException;
@@ -33,8 +31,6 @@ public interface CinemaWebService {
 	
 	ActorDTO findOneActor(@WebParam(name = "id") Long id) throws ActorNotFoundException;
 
-	ActorWithRolesDTO findOneActorWithRoles(@WebParam(name = "id") Long id) throws ActorNotFoundException;
-	
 	void deleteActor(@WebParam(name = "id") Long id);
 	
 	List<ActorDTO> findActors(@WebParam(name = "firstName") String firstName, @WebParam(name = "lastName") String lastName);
@@ -47,29 +43,27 @@ public interface CinemaWebService {
 	
 	MovieDTO findOneMovie(@WebParam(name = "id") Long id) throws MovieNotFoundException;
 
-	MovieWithRolesDTO findOneMovieWithRoles(@WebParam(name = "id") Long id) throws MovieNotFoundException;
-	
 	void deleteMovie(@WebParam(name = "id") Long id);
 	
 	List<MovieDTO> findMovies(@WebParam(name = "title") String title);
 	
 	List<MovieDTO> findAllMovies();
 	
-	RoleWithActorAndMovieDTO createRole(
+	RoleDTO createRole(
 			@WebParam(name = "actorId") Long actorId, 
 			@WebParam(name = "movieId") Long movieId, 
 			@WebParam(name = "firstName") String firstName, 
 			@WebParam(name = "lastName") String lastName) 
 			throws ActorNotFoundException, MovieNotFoundException;
 	
-	RoleWithActorAndMovieDTO updateRole(
+	RoleDTO updateRole(
 			@WebParam(name = "actorId") Long actorId, 
 			@WebParam(name = "movieId") Long movieId, 
 			@WebParam(name = "firstName") String firstName, 
 			@WebParam(name = "lastName") String lastName) 
 					throws RoleNotFoundException;
 	
-	RoleWithActorAndMovieDTO findOneRole(
+	RoleDTO findOneRole(
 			@WebParam(name = "actorId") Long actorId, 
 			@WebParam(name = "movieId") Long movieId) throws RoleNotFoundException;
 	
@@ -78,6 +72,6 @@ public interface CinemaWebService {
 			@WebParam(name = "movieId") Long movieId)
 			throws RoleNotFoundException;
 	
-	List<RoleWithActorAndMovieDTO> findAllRoles();
+	List<RoleDTO> findAllRoles();
 	
 }
