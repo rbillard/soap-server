@@ -21,7 +21,7 @@ public class Movie {
 	@Column
 	private String title;
 	
-	@OneToMany( mappedBy = "id.movie", cascade = CascadeType.ALL )
+	@OneToMany( mappedBy = "movie", cascade = CascadeType.ALL )
 	private List<Role> roles;
 	
 	

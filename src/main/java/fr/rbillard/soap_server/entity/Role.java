@@ -1,22 +1,28 @@
 package fr.rbillard.soap_server.entity;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Role {
 	
-	@EmbeddedId
-	private RoleId id;
+	@Id
+	@GeneratedValue
+	private Long id;
 	
-	@Column( name = "ACTOR_ID", insertable = false, updatable = false )
-	private Long actorId;
-	
-	@Column( name = "MOVIE_ID", insertable = false, updatable = false )
-	private Long movieId;
+	@ManyToOne
+	@JoinColumn(name = "ACTOR_ID")
+	private Actor actor;
+
+	@ManyToOne
+	@JoinColumn(name = "MOVIE_ID")
+	private Movie movie;
 	
 	@Column
 	private String firstName;
@@ -25,29 +31,29 @@ public class Role {
 	private String lastName;
 	
 	
-	public RoleId getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId( RoleId id ) {
+	public void setId( Long id ) {
 		this.id = id;
 	}
 	
+	
+	public Actor getActor() {
+		return actor;
+	}
+	public void setActor( Actor actor ) {
+		this.actor = actor;
+	}
 
-	public Long getActorId() {
-		return actorId;
-	}
-	public void setActorId( Long actorId ) {
-		this.actorId = actorId;
-	}
 	
-	
-	public Long getMovieId() {
-		return movieId;
+	public Movie getMovie() {
+		return movie;
 	}
-	public void setMovieId( Long movieId ) {
-		this.movieId = movieId;
+	public void setMovie( Movie movie ) {
+		this.movie = movie;
 	}
-	
+
 
 	public String getFirstName() {
 		return firstName;

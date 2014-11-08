@@ -11,11 +11,11 @@ public interface RoleService {
 
 	Role create( Long actorId, Long movieId, String firstName, String lastName ) throws ActorNotFoundException, MovieNotFoundException;
 
-	Role update( Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException;
+	Role update( Long roleId, Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException,  ActorNotFoundException, MovieNotFoundException;
 
-	void delete( Long actorId, Long movieId ) throws RoleNotFoundException;
+	void delete( Long id ) throws RoleNotFoundException;
 	
-	Role find( Long actorId, Long movieId ) throws RoleNotFoundException;
+	Role find( Long id ) throws RoleNotFoundException;
 	
 	List<Role> findAll();
 

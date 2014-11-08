@@ -57,20 +57,18 @@ public interface CinemaWebService {
 			throws ActorNotFoundException, MovieNotFoundException;
 	
 	RoleDTO updateRole(
-			@WebParam(name = "actorId") Long actorId, 
+			@WebParam(name = "roleId") Long roleId,
+			@WebParam(name = "actorId") Long actorId,
 			@WebParam(name = "movieId") Long movieId, 
 			@WebParam(name = "firstName") String firstName, 
 			@WebParam(name = "lastName") String lastName) 
-					throws RoleNotFoundException;
+					throws RoleNotFoundException, ActorNotFoundException, MovieNotFoundException;
 	
 	RoleDTO findOneRole(
-			@WebParam(name = "actorId") Long actorId, 
-			@WebParam(name = "movieId") Long movieId) throws RoleNotFoundException;
+			@WebParam(name = "id") Long id) throws RoleNotFoundException;
 	
 	void deleteRole(
-			@WebParam(name = "actorId") Long actorId, 
-			@WebParam(name = "movieId") Long movieId)
-			throws RoleNotFoundException;
+			@WebParam(name = "id") Long id) throws RoleNotFoundException;
 	
 	List<RoleDTO> findAllRoles();
 	

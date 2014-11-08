@@ -125,14 +125,14 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	}
 	
 	@Override
-	public RoleDTO updateRole( Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException {
-		Role role = roleService.update( actorId, movieId, firstName, lastName );
+	public RoleDTO updateRole( Long roleId, Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException, ActorNotFoundException, MovieNotFoundException {
+		Role role = roleService.update( roleId, actorId, movieId, firstName, lastName );
 		return roleMapper.map( role );
 	}
 
 	@Override
-	public void deleteRole( Long actorId, Long movieId ) throws RoleNotFoundException {
-		roleService.delete( actorId, movieId );
+	public void deleteRole( Long id ) throws RoleNotFoundException {
+		roleService.delete( id );
 	}
 
 	@Override
@@ -142,8 +142,8 @@ public class CinemaWebServiceImpl implements CinemaWebService {
 	}
 
 	@Override
-	public RoleDTO findOneRole( Long actorId, Long movieId ) throws RoleNotFoundException {
-		Role role = roleService.find( actorId, movieId );
+	public RoleDTO findOneRole( Long id ) throws RoleNotFoundException {
+		Role role = roleService.find( id );
 		return roleMapper.map( role );
 	}
 

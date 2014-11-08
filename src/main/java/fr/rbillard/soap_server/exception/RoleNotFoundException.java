@@ -4,20 +4,14 @@ public class RoleNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long actorId;
-	private Long movieId;
+	private Long roleId;
 	
-	public RoleNotFoundException( Long actorId, Long movieId ) {
-		this.actorId = actorId;
-		this.movieId = movieId;
+	public RoleNotFoundException( Long roleId ) {
+		this.roleId = roleId;
 	}
 	
-	public Long getActorId() {
-		return actorId;
-	}
-	
-	public Long getMovieId() {
-		return movieId;
+	public Long getRoleId() {
+		return roleId;
 	}
 	
 }

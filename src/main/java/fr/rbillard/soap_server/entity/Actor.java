@@ -28,7 +28,7 @@ public class Actor {
 	@Column
 	private Date birthDate;
 	
-	@OneToMany( mappedBy = "id.actor", cascade = CascadeType.ALL )
+	@OneToMany( mappedBy = "actor", cascade = CascadeType.ALL )
 	private List<Role> roles;
 
 	

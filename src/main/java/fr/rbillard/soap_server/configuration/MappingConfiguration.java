@@ -52,16 +52,16 @@ public class MappingConfiguration {
 
 				// Role
 				mapping( Role.class, RoleDTO.class, oneWay(), mapId( "role" ) )
-					.fields( "id.actor", "actor", useMapId( "actorWithoutRoles" ) )
-					.fields( "id.movie", "movie", useMapId( "movieWithoutRoles" ) );
+					.fields( "actor", "actor", useMapId( "actorWithoutRoles" ) )
+					.fields( "movie", "movie", useMapId( "movieWithoutRoles" ) );
 
 				mapping( Role.class, RoleDTO.class, oneWay(), mapId( "roleWithoutActor" ) )
 					.exclude( "actor" )
-					.fields( "id.movie", "movie", useMapId( "movieWithoutRoles" ) );
+					.fields( "movie", "movie", useMapId( "movieWithoutRoles" ) );
 
 				mapping( Role.class, RoleDTO.class, oneWay(), mapId( "roleWithoutMovie" ) )
 					.exclude( "movie" )
-					.fields( "id.actor", "actor", useMapId( "actorWithoutRoles" ) );
+					.fields( "actor", "actor", useMapId( "actorWithoutRoles" ) );
 
 			}
 			

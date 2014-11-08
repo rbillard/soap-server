@@ -394,6 +394,7 @@ Réponse :
    &lt;soap:Body&gt;
       &lt;ns2:createRoleResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
          &lt;return&gt;
+            &lt;id&gt;1&lt;/id&gt;
             &lt;firstName&gt;Jack&lt;/firstName&gt;
             &lt;lastName&gt;SPARROW&lt;/lastName&gt;
             &lt;actor&gt;
@@ -417,8 +418,7 @@ Réponse :
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
       &lt;ws:deleteRole&gt;
-         &lt;actorId&gt;1&lt;/actorId&gt;
-         &lt;movieId&gt;1&lt;/movieId&gt;
+         &lt;id&gt;1&lt;/id&gt;
       &lt;/ws:deleteRole&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;
@@ -446,6 +446,7 @@ Réponse :
    &lt;soap:Body&gt;
       &lt;ns2:findAllRolesResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
          &lt;return&gt;
+            &lt;id&gt;1&lt;/id&gt;
             &lt;firstName&gt;Jack&lt;/firstName&gt;
             &lt;lastName&gt;SPARROW&lt;/lastName&gt;
             &lt;actor&gt;
@@ -460,6 +461,7 @@ Réponse :
             &lt;/movie&gt;
          &lt;/return&gt;
          &lt;return&gt;
+            &lt;id&gt;2&lt;/id&gt;
             &lt;firstName&gt;Will&lt;/firstName&gt;
             &lt;lastName&gt;TURNER&lt;/lastName&gt;
             &lt;actor&gt;
@@ -483,8 +485,7 @@ Réponse :
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
       &lt;ws:findOneRole&gt;
-         &lt;actorId&gt;1&lt;/actorId&gt;
-         &lt;movieId&gt;1&lt;/movieId&gt;
+         &lt;id&gt;1&lt;/id&gt;
       &lt;/ws:findOneRole&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;
@@ -495,6 +496,7 @@ Réponse :
    &lt;soap:Body&gt;
       &lt;ns2:findOneRoleResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
          &lt;return&gt;
+            &lt;id&gt;1&lt;/id&gt;
             &lt;firstName&gt;Jack&lt;/firstName&gt;
             &lt;lastName&gt;SPARROW&lt;/lastName&gt;
             &lt;actor&gt;
@@ -518,6 +520,7 @@ Réponse :
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
       &lt;ws:updateRole&gt;
+         &lt;roleId&gt;1&lt;/roleId&gt;
          &lt;actorId&gt;1&lt;/actorId&gt;
          &lt;movieId&gt;1&lt;/movieId&gt;
          &lt;firstName&gt;Jack&lt;/firstName&gt;
@@ -532,6 +535,7 @@ Réponse :
    &lt;soap:Body&gt;
       &lt;ns2:updateRoleResponse xmlns:ns2="http://ws.soap_server.rbillard.fr/"&gt;
          &lt;return&gt;
+            &lt;id&gt;1&lt;/id&gt;
             &lt;firstName&gt;Jack&lt;/firstName&gt;
             &lt;lastName&gt;SPARROW&lt;/lastName&gt;
             &lt;actor&gt;

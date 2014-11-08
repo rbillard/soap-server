@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.rbillard.soap_server.entity.Role;
-import fr.rbillard.soap_server.entity.RoleId;
 import fr.rbillard.soap_server.exception.ActorNotFoundException;
 import fr.rbillard.soap_server.exception.MovieNotFoundException;
 import fr.rbillard.soap_server.exception.RoleNotFoundException;
@@ -29,10 +28,9 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role create( Long actorId, Long movieId, String firstName, String lastName ) throws ActorNotFoundException, MovieNotFoundException {
 		
-		RoleId id = getRoleId( actorId, movieId );
-		
 		Role role = new Role();
-		role.setId( id );
+		role.setActor( actorService.findOne( actorId ) );
+		role.setMovie( movieService.findOne( movieId ) );
 		role.setFirstName( firstName );
 		role.setLastName( lastName );
 		
@@ -41,10 +39,12 @@ public class RoleServiceImpl implements RoleService {
 	}
 	
 	@Override
-	public Role update( Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException  {
+	public Role update( Long roleId, Long actorId, Long movieId, String firstName, String lastName ) throws RoleNotFoundException, ActorNotFoundException, MovieNotFoundException  {
 		
-		Role role = find( actorId, movieId );
+		Role role = find( roleId );
 		
+		role.setActor( actorService.findOne( actorId ) );
+		role.setMovie( movieService.findOne( movieId ) );
 		role.setFirstName( firstName );
 		role.setLastName( lastName );
 		
@@ -53,15 +53,8 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public void delete( Long actorId, Long movieId ) throws RoleNotFoundException {
-		
-		try {
-			RoleId id = getRoleId( actorId, movieId );
-			repository.delete( id );
-		} catch ( ActorNotFoundException | MovieNotFoundException e ) {
-			throw new RoleNotFoundException( actorId, movieId );
-		}
-		
+	public void delete( Long id ) throws RoleNotFoundException {
+		repository.delete( id );
 	}
 
 	@Override
@@ -70,31 +63,16 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role find( Long actorId, Long movieId ) throws RoleNotFoundException {
+	public Role find( Long id ) throws RoleNotFoundException {
 		
-		Role role;
-		try {
-			role = repository.findOne( getRoleId( actorId, movieId ) );
-		} catch ( ActorNotFoundException | MovieNotFoundException e ) {
-			throw new RoleNotFoundException( actorId, movieId );
-		}
+		Role role = repository.findOne( id );
 		
 		if ( role == null ) {
-			throw new RoleNotFoundException( actorId, movieId );
+			throw new RoleNotFoundException( id );
 		}
 		
 		return role;
 		
 	}
 	
-	private RoleId getRoleId( Long actorId, Long movieId ) throws ActorNotFoundException, MovieNotFoundException {
-
-		RoleId id = new RoleId();
-		id.setActor( actorService.findOne( actorId ) );
-		id.setMovie( movieService.findOne( movieId ) );
-		
-		return id;
-		
-	}
-
 }
