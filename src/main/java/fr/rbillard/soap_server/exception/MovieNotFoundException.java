@@ -4,13 +4,13 @@ public class MovieNotFoundException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	
-	private long movieId;
+	private Long movieId;
 
-	public MovieNotFoundException( long movieId ) {
+	public MovieNotFoundException( Long movieId ) {
 		this.movieId = movieId;
 	}
 	
-	public long getMovieId() {
+	public Long getMovieId() {
 		return movieId;
 	}
 

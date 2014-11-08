@@ -3,10 +3,10 @@ package fr.rbillard.soap_server.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlType;
 
-import com.sun.xml.txw2.annotation.XmlElement;
 
 @XmlType(propOrder = {"id", "firstName", "lastName", "birthDate", "roles"})
 public class ActorDTO {
@@ -50,8 +50,8 @@ public class ActorDTO {
 	}
 	
 	
-	@XmlElementWrapper( name = "roles " )
-	@XmlElement( "role" )
+	@XmlElementWrapper( name = "roles" )
+	@XmlElement( name = "role" )
 	public List<RoleDTO> getRoles() {
 		return roles;
 	}

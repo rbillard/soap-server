@@ -3,6 +3,7 @@ package fr.rbillard.soap_server.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Actor {
 	@Column
 	private Date birthDate;
 	
-	@OneToMany(mappedBy = "id.actor")
+	@OneToMany( mappedBy = "id.actor", cascade = CascadeType.ALL )
 	private List<Role> roles;
 
 	
