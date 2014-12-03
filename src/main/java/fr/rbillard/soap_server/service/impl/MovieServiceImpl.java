@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.rbillard.soap_server.entity.Movie;
-import fr.rbillard.soap_server.entity.Role;
 import fr.rbillard.soap_server.exception.MovieNotFoundException;
 import fr.rbillard.soap_server.repository.MovieRepository;
 import fr.rbillard.soap_server.service.MovieService;

@@ -30,7 +30,7 @@ IDE Eclipse STS 3.6.2
 
 
 ## Utilisation
-Une fois installée sur un serveur, le WSDl est accessible depuis ADRESSE_DU_SERVEUR/soap-server/services.
+Une fois installée sur un serveur, le WSDL est accessible depuis ADRESSE_DU_SERVEUR/soap-server/services.
 Les requêtes sont envoyées à l'adresse : ADRESSE_DU_SERVEUR/soap-server/services/cinema.
 
 Il existe 1 service permettant de gérer les acteurs, les films et les rôles.
